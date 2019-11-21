@@ -61,16 +61,14 @@ process combineVcfs {
   file(vcf_tbi) from all_vcfs_tbi.collect()
 
   output:
-  file("*.cohort.g.vcf.gz") into someOutputChannel
+  file("cohort.g.vcf.gz.*") into someOutputChannel
 
   script:
   """
-  echo ${vcf}
   NV='';
   for k in ${vcf}; do
     NV="\$NV --variant \$k";
   done;
-  echo \$NV
 
    gatk CombineGVCFs \
      -R ${ref} \
