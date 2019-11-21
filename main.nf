@@ -15,7 +15,7 @@ if (params.reference_fai) {
 
 if (params.reference_dict) {
   Channel.fromPath(params.reference_dict)
-    .ifEmpty{ exit 1, "We need a reference genome fai."}
+    .ifEmpty{ exit 1, "We need a reference genome dict."}
     .into{ reference_genome_dict }
 }
 
@@ -27,7 +27,7 @@ if (params.vcfs) {
 
 if (params.vcfs_tbi) {
   Channel.fromPath(params.vcfs_tbi)
-      .ifEmpty{ exit 1, "We need to specify vcf files." }
+      .ifEmpty{ exit 1, "We need to specify vcf files index." }
       .into{ all_vcfs_tbi }
 }
 
